@@ -3,7 +3,11 @@ class CustomerManager:
         self.customers = {}
         self.tax_rate = 0.2
         self.tax_threshold = 100
+        self.potential_discount_threshold = 300
         self.discount_threshold = 500
+        self.priority_threshold = 800
+        self.vip_threshold = 1000
+
 
     def add_customer(self, name, purchases):
         if name in self.customers.keys():
@@ -30,14 +34,14 @@ class CustomerManager:
             if total_price > self.discount_threshold:
                 print("Eligible for discount")
             else:
-                if total_price > 300:
+                if total_price > self.potential_discount_threshold:
                     print("Potential future discount customer")
                 else:
                     print("No discount")
-            if total_price > 1000:
+            if total_price > self.vip_threshold:
                 print("VIP Customer!")
             else:
-                if total_price > 800:
+                if total_price > self.priority_threshold:
                     print("Priority Customer")
 
     def calculate_shipping_fee(self, purchases):
