@@ -20,12 +20,12 @@ class CustomerManager:
     def generate_report(self):
         for customers, purchases in self.customers.items():
             total_price = 0
-            for z in purchases:
-                if z['price'] > self.tax_threshold:
-                    taxed_price = z['price'] * (1 + self.tax_rate)
+            for purchase in purchases:
+                if purchase['price'] > self.tax_threshold:
+                    taxed_price = purchase['price'] * (1 + self.tax_rate)
                     total_price += taxed_price
                 else:
-                    total_price += z['price']
+                    total_price += purchase['price']
             print(customers)
             if total_price > self.discount_threshold:
                 print("Eligible for discount")
