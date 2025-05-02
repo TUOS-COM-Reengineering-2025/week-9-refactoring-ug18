@@ -31,18 +31,17 @@ class CustomerManager:
                 else:
                     total_price += purchase['price']
             print(customers)
-            if total_price > self.discount_threshold:
-                print("Eligible for discount")
-            else:
-                if total_price > self.potential_discount_threshold:
-                    print("Potential future discount customer")
-                else:
-                    print("No discount")
+
             if total_price > self.vip_threshold:
                 print("VIP Customer!")
+            elif total_price > self.priority_threshold:
+                print("Priority Customer")
+            elif total_price > self.discount_threshold:
+                print("Eligible for discount")
+            elif total_price > self.potential_discount_threshold:
+                print("Potential future discount customer")
             else:
-                if total_price > self.priority_threshold:
-                    print("Priority Customer")
+                print("No discount")
 
     def calculate_shipping_fee(self, purchases):
         heavy_item = False
