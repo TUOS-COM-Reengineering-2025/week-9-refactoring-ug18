@@ -65,5 +65,3 @@ class CustomerManager:
         if self.has_fragile_items(purchases):
             return 60
         return 25
-
-flat_tax = 0.2
