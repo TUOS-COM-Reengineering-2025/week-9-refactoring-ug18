@@ -61,17 +61,9 @@ class CustomerManager:
             return 50
         return 20
 
-
-
-def calculate_shipping_fee_for_fragile_items(purchases):
-    fragile_item = False
-    for purchase in purchases:
-        if purchase.get('fragile', False):
-            fragile_item = True
-            break
-    if fragile_item:
-        return 60
-    else:
+    def calculate_shipping_fee_for_fragile_items(self, purchases):
+        if self.has_fragile_items(purchases):
+            return 60
         return 25
 
 flat_tax = 0.2
