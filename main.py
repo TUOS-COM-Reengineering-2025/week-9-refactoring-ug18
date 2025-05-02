@@ -8,7 +8,6 @@ class CustomerManager:
         self.priority_threshold = 800
         self.vip_threshold = 1000
 
-
     def add_customer(self, name, purchases):
         if name in self.customers.keys():
             self.customers[name].extend(purchases)
@@ -45,13 +44,11 @@ class CustomerManager:
         else:
             print("No discount")
 
+    def has_heavy_items(self, purchases):
+        return any(purchase.get('weight', 0) > 20 for purchase in purchases)
+
     def calculate_shipping_fee(self, purchases):
-        heavy_item = False
-        for purchase in purchases:
-            if purchase.get('weight', 0) > 20:
-                heavy_item = True
-                break
-        if heavy_item:
+        if self.has_heavy_items(purchases):
             return 50
         else:
             return 20
