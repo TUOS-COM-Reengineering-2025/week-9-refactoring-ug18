@@ -47,17 +47,21 @@ class CustomerManager:
     def has_heavy_items(self, purchases):
         return any(purchase.get('weight', 0) > 20 for purchase in purchases)
 
+    def has_fragile_items(self, purchases):
+        return any(purchase.get('fragile', False) for purchase in purchases)
+
     def calculate_shipping_fee(self, purchases):
         if self.has_heavy_items(purchases):
             return 50
         else:
             return 20
 
-def calculate_shipping_fee_for_heavy_items(purchases):
-    for purchase in purchases:
-        if purchase.get('weight', 0) > 20:
+    def calculate_shipping_fee_for_heavy_items(self, purchases):
+        if self.has_heavy_items(purchases):
             return 50
-    return 20
+        return 20
+
+
 
 def calculate_shipping_fee_for_fragile_items(purchases):
     fragile_item = False
