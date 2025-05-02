@@ -59,11 +59,11 @@ class CustomerManager:
         if is_special:
             return special_fee
         return default_fee
-    
+
     def calculate_shipping_fee_for_heavy_items(self, purchases):
         heavy_items = self.has_heavy_items(purchases)
-        self.calculate_special_fee(heavy_items, 50, 20)
+        return self.calculate_special_fee(heavy_items, 50, 20)
 
     def calculate_shipping_fee_for_fragile_items(self, purchases):
         fragile_items = self.has_fragile_items(purchases)
-        self.calculate_special_fee(fragile_items, 60, 25)
+        return self.calculate_special_fee(fragile_items, 60, 25)
