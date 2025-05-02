@@ -18,7 +18,7 @@ class CustomerManager:
         self.add_customer(name, purchases)
 
     def generate_report(self):
-        for y, purchases in self.customers.items():
+        for customers, purchases in self.customers.items():
             a = 0
             for z in purchases:
                 if z['price'] > self.tax_threshold:
@@ -26,7 +26,7 @@ class CustomerManager:
                     a += taxed_price
                 else:
                     a += z['price']
-            print(y)
+            print(customers)
             if a > self.discount_threshold:
                 print("Eligible for discount")
             else:
