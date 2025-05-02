@@ -18,9 +18,9 @@ class CustomerManager:
         self.add_customer(name, purchases)
 
     def generate_report(self):
-        for y, x in self.customers.items():
+        for y, purchases in self.customers.items():
             a = 0
-            for z in x:
+            for z in purchases:
                 if z['price'] > self.tax_threshold:
                     taxed_price = z['price'] * (1 + self.tax_rate)
                     a += taxed_price
